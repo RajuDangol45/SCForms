@@ -1,0 +1,15 @@
+.custom-input-builder {
+  .question-type {
+    display: flex;
+    align-items: center;
+
+    .dropdown-toggle {
+      width: 100%;
+      text-transform: capitalize;
+    }
+
+    .dropdown-item {
+      text-transform: capitalize;
+    }
+  }
+}

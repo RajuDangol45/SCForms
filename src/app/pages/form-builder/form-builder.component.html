@@ -1,0 +1,35 @@
+<div class="form-builder p-4">
+  <!-- TITLE CONTAINER START -->
+  <div class="title-container container">
+    <div class="card">
+      <div class="card-body">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Form Title">
+        </div>
+        <div class="input-group">
+          <textarea class="form-control" placeholder="Form Description" rows="5"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TITLE CONTAINER END -->
+
+  <!-- FORM BUILDER START -->
+  <div class="form-builder-body container p-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="custom-input-container mb-2" *ngFor="let input of inputs">
+          <app-custom-input-builder [customInput]="input" (removeItem)="removeItem($event)"
+            [canRemoveItem]="inputs.length > 1"></app-custom-input-builder>
+        </div>
+        <button class="btn btn-primary mt-3 add-input-btn" (click)="addDefaultInput()">Add Input</button>
+      </div>
+    </div>
+  </div>
+  <!-- FORM BUILDER END -->
+
+  <div class="save-fill-container">
+    <button class="btn btn-success ml-3 mr-2 add-input-btn">Save Form</button>
+    <button class="btn btn-link mr-3 ml-2 add-input-btn">Fill Form</button>
+  </div>
+</div>

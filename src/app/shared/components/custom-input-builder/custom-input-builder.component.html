@@ -1,0 +1,32 @@
+<div class="custom-input-builder">
+  <div class="question-type">
+    <div class="row w-100">
+      <div class="col-md-9">
+        <div class="input-group mt-1">
+          <input type="text" class="form-control" placeholder="Question">
+        </div>
+      </div>
+      <div class="col">
+        <div class="row">
+          <div class="col-md-7">
+            <button class="btn btn-info dropdown-toggle mt-1" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{selectedInputType}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <button class="dropdown-item" *ngFor="let type of inputTypes"
+                (click)="selectInputType(type)">{{type}}</button>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <button class="btn btn-warning delete-btn mt-1" (click)="remove()"
+              [disabled]="!canRemoveItem">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
