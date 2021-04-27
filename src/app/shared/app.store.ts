@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CustomInput } from '../models/custom-input.model';
-import { UserInput } from '../models/user-input.model';
 import { Store } from './store';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class AppStoreState {
   formTitle: string;
   formDescription: string;
   inputForm: CustomInput[];
-  userInputs: UserInput[];
+  userInput: any;
 }
 
 export class AppStore extends Store<AppStoreState> {
@@ -40,10 +39,10 @@ export class AppStore extends Store<AppStoreState> {
     });
   }
 
-  public setUserInputs(inputs: UserInput[]): void {
+  public setUserInput(input): void {
     this.setState({
       ...this.state,
-      userInputs: inputs
+      userInput: input
     });
   }
 }

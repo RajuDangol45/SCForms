@@ -56,9 +56,23 @@ export class FormBuilderComponent implements OnInit {
       return;
     }
 
+    this.setOptionsValues();
     this.appStore.setFormTitle(this.inputsForm.value.formTitle);
     this.appStore.setFormDescription(this.inputsForm.value.formDescription);
-    this.appStore.setInputForm(this.inputsForm.value.inputsFormArray.value);
+    this.appStore.setInputForm(this.inputsForm.value.inputsFormArray);
+  }
+
+  setOptionsValues = (): void => {
+    this.inputsFormArray.controls.forEach((control, index) => {
+      const optionCollection = Array.from(document.getElementsByClassName(`option-${index}`));
+      const options = [];
+      for (const option of optionCollection) {
+        if ((option as any).value) {
+          options.push((option as any).value);
+        }
+      }
+      (control as FormGroup).controls.options.setValue(options);
+    });
   }
 
   fillForm = () => {

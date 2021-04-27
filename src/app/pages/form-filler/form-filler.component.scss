@@ -1,0 +1,10 @@
+.form-filler {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .card {
+    border: 2px solid;
+    border-radius: 4px;
+  }
+}

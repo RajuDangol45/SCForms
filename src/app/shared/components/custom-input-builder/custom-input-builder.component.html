@@ -11,7 +11,7 @@
           <div class="row" *ngFor="let option of customInputValue.options; let i = index">
             <div class="col-md-4 offset-md-4">
               <div class="input-group mt-1">
-                <input type="text" class="form-control" placeholder="Option">
+                <input type="text" [class]="'form-control ' + 'option-' + inputIndex" placeholder="Option">
               </div>
             </div>
           </div>
@@ -29,10 +29,12 @@
         <div class="required mt-3">
           <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-dark">
-              <input type="radio" name="options" id="option1" autocomplete="off" [checked]="isRequired"> Required
+              <input type="radio" name="options" id="option1" autocomplete="off" [checked]="isRequired"
+                (click)="updateRequiredValue(true)"> Required
             </label>
             <label class="btn btn-dark">
-              <input type="radio" name="options" id="option2" autocomplete="off" [checked]="!isRequired"> Not Required
+              <input type="radio" name="options" id="option2" autocomplete="off" [checked]="!isRequired"
+                (click)="updateRequiredValue(false)"> Not Required
             </label>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CustomInput } from 'src/app/models/custom-input.model';
 import { InputTypes } from '../../enums/input-types.enum';
 
@@ -13,8 +13,9 @@ export class CustomInputBuilderComponent implements OnInit {
   public selectedInputType: string = InputTypes.TEXT;
   public InputTypes = InputTypes;
 
-  @Input() customInput: FormControl;
+  @Input() customInput: FormGroup;
   @Input() canRemoveItem: boolean;
+  @Input() inputIndex: number;
   @Output() removeItem = new EventEmitter();
 
   constructor() { }
@@ -36,7 +37,7 @@ export class CustomInputBuilderComponent implements OnInit {
 
   get canAddOption(): boolean {
     if (this.selectedInputType === InputTypes.SWITCH) {
-      return this.customInputValue.options.length < 2;
+      return this.customInputValue.options.length < 1;
     }
     return true;
   }
@@ -64,6 +65,7 @@ export class CustomInputBuilderComponent implements OnInit {
     }
 
     this.selectedInputType = type;
+    this.customInput.controls.type.setValue(this.selectedInputType);
   }
 
   public remove = (): void => {
@@ -74,7 +76,11 @@ export class CustomInputBuilderComponent implements OnInit {
     this.customInputValue.options.push('');
   }
 
-  public removeOption = (index: number): void => {
-    this.customInputValue.options.splice(index, 1);
+  public removeOption = (): void => {
+    this.customInputValue.options.splice(this.customInputValue.options.length - 1);
+  }
+
+  public updateRequiredValue = (required: boolean) => {
+    this.customInput.controls.required.setValue(required);
   }
 }

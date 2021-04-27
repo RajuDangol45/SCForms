@@ -21,7 +21,7 @@
       <div class="card-body">
         <div class="custom-input-container mb-4" *ngFor="let input of inputsFormArray.controls; let i = index">
           <app-custom-input-builder [customInput]="input" (removeItem)="removeItem($event)"
-            [canRemoveItem]="inputsFormArray.controls.length > 1"></app-custom-input-builder>
+            [canRemoveItem]="inputsFormArray.controls.length > 1" [inputIndex]="i"></app-custom-input-builder>
         </div>
         <button class="btn btn-primary mt-3 add-input-btn" (click)="addDefaultInput()">Add Input</button>
       </div>
