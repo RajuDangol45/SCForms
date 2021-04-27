@@ -1,10 +1,42 @@
-<div class="custom-input-builder">
+<div class="custom-input-builder" [formGroup]="customInput">
   <div class="question-type">
     <div class="row w-100">
       <div class="col-md-9">
+
         <div class="input-group mt-1">
-          <input type="text" class="form-control" placeholder="Question">
+          <input type="text" class="form-control" placeholder="Question" formControlName="label">
         </div>
+
+        <div class="options mt-1" *ngIf="hasOptions">
+          <div class="row" *ngFor="let option of customInputValue.options; let i = index">
+            <div class="col-md-4 offset-md-4">
+              <div class="input-group mt-1">
+                <input type="text" class="form-control" placeholder="Option">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2 offset-md-4">
+              <button class="btn btn-secondary mt-1 w-100" [disabled]="!canAddOption" (click)="addOption()">Add</button>
+            </div>
+            <div class="col-md-2">
+              <button class="btn btn-warning mt-1 w-100" [disabled]="!canRemoveOption"
+                (click)="removeOption()">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="required mt-3">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-dark">
+              <input type="radio" name="options" id="option1" autocomplete="off" [checked]="isRequired"> Required
+            </label>
+            <label class="btn btn-dark">
+              <input type="radio" name="options" id="option2" autocomplete="off" [checked]="!isRequired"> Not Required
+            </label>
+          </div>
+        </div>
+
       </div>
       <div class="col">
         <div class="row">
@@ -19,7 +51,7 @@
             </div>
           </div>
           <div class="col-md-5">
-            <button class="btn btn-warning delete-btn mt-1" (click)="remove()"
+            <button class="btn btn-danger delete-btn mt-1" (click)="remove()"
               [disabled]="!canRemoveItem">Remove</button>
           </div>
         </div>

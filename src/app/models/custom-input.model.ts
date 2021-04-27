@@ -3,6 +3,6 @@ export class CustomInput {
   type: string;
   label: string;
   placeholder?: string;
-  options?: [];
-  validation?: [];
+  options?: string[];
+  required?: boolean;
 }

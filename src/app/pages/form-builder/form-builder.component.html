@@ -1,13 +1,14 @@
-<div class="form-builder p-4">
+<div class="form-builder p-4" [formGroup]="inputsForm">
   <!-- TITLE CONTAINER START -->
   <div class="title-container container">
     <div class="card">
       <div class="card-body">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Form Title">
+          <input type="text" class="form-control" placeholder="Form Title" formControlName="formTitle">
         </div>
         <div class="input-group">
-          <textarea class="form-control" placeholder="Form Description" rows="5"></textarea>
+          <textarea class="form-control" placeholder="Form Description" rows="5"
+            formControlName="formDescription"></textarea>
         </div>
       </div>
     </div>
@@ -18,9 +19,9 @@
   <div class="form-builder-body container p-4">
     <div class="card">
       <div class="card-body">
-        <div class="custom-input-container mb-2" *ngFor="let input of inputs">
+        <div class="custom-input-container mb-4" *ngFor="let input of inputsFormArray.controls; let i = index">
           <app-custom-input-builder [customInput]="input" (removeItem)="removeItem($event)"
-            [canRemoveItem]="inputs.length > 1"></app-custom-input-builder>
+            [canRemoveItem]="inputsFormArray.controls.length > 1"></app-custom-input-builder>
         </div>
         <button class="btn btn-primary mt-3 add-input-btn" (click)="addDefaultInput()">Add Input</button>
       </div>
@@ -29,7 +30,7 @@
   <!-- FORM BUILDER END -->
 
   <div class="save-fill-container">
-    <button class="btn btn-success ml-3 mr-2 add-input-btn">Save Form</button>
-    <button class="btn btn-link mr-3 ml-2 add-input-btn">Fill Form</button>
+    <button class="btn btn-success ml-3 mr-2 add-input-btn" (click)="saveForm()">Save Form</button>
+    <button class="btn btn-link mr-3 ml-2 add-input-btn" (click)="fillForm()">Fill Form</button>
   </div>
 </div>
