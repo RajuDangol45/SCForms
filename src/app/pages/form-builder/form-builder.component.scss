@@ -1,0 +1,46 @@
+.form-builder {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .card {
+    border: 2px solid;
+    border-radius: 4px;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: center;
+
+    .card {
+      border-color: #512da8;
+      width: 30rem;
+    }
+  }
+
+  .form-builder-body {
+    .card {
+      border-color: #ede7f6;
+
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .add-input-btn {
+          width: fit-content;
+        }
+
+        .custom-input-container {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .note {
+    color: black;
+    background-color: yellow;
+    border-radius: 8px;
+  }
+}
