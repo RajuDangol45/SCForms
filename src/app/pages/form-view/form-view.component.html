@@ -1,1 +1,25 @@
-<p>form-view works!</p>
+<div class="form-view">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Question</th>
+        <th scope="col">Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let control of customForm; let i = index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{control.label}}</td>
+        <td *ngIf="control.type === InputTypes.CHECKBOX">
+          <div *ngFor="let option of control.options; let i = index">
+            <div *ngIf="userInput[control.label][option]">{{option}}
+              <br />
+            </div>
+          </div>
+        </td>
+        <td *ngIf="control.type !== InputTypes.CHECKBOX">{{userInput[control.label]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

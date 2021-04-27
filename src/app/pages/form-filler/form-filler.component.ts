@@ -43,11 +43,11 @@ export class FormFillerComponent implements OnInit {
       switch (control.type) {
         case InputTypes.CHECKBOX:
         case InputTypes.RADIO_BUTTONS:
-          const formArray = new FormArray([]);
+          const formGroup = new FormGroup({});
           control.options.forEach((option, index) => {
-            formArray.controls.push(new FormControl(false));
+            formGroup.addControl(option, new FormControl(false));
           });
-          this.responseForm.addControl(control.label, formArray);
+          this.responseForm.addControl(control.label, formGroup);
           break;
         default:
           this.responseForm.addControl(control.label, new FormControl('', control.required ? Validators.required : []));
